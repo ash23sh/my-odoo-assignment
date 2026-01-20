@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Inherit Sale Order form to add custom tags field (Task 2) -->
+    <record id="view_order_form_inherit_tags" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit.tags</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+
+            <!-- Insert tag_ids after Customer (partner_id) with many2many_tags widget -->
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="tag_ids"
+                       widget="many2many_tags"
+                       options="{'color_field': 'color', 'no_create_edit': True}"
+                       placeholder="Select tags..."/>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>

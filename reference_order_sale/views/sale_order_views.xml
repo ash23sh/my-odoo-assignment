@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Inherit Sale Order form view -->
+    <record id="view_order_form_inherit_reference" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit.reference</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+
+            <!-- Add custom field after the first occurrence of date_order -->
+            <xpath expr="//field[@name='date_order'][1]" position="after">
+                <field name="code_reference" placeholder="e.g. REF-001"/>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>
